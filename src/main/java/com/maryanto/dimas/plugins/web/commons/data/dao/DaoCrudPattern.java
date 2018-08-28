@@ -1,12 +1,24 @@
-package com.maryanto.dimas.plugins.web.commons.data.service;
+package com.maryanto.dimas.plugins.web.commons.data.dao;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @param <T>
  * @param <ID>
  */
-public interface CrudPatternService<T, ID extends Serializable> {
+public interface DaoCrudPattern<T, ID extends Serializable> {
+
+    /**
+     * @param param
+     * @return
+     */
+    T findId(ID param);
+
+    /**
+     * @return
+     */
+    List<T> findAll();
 
     /**
      * @param param
@@ -30,5 +42,5 @@ public interface CrudPatternService<T, ID extends Serializable> {
      * @param param
      * @return
      */
-    boolean remove(ID param);
+    boolean removeById(ID param);
 }

@@ -8,15 +8,10 @@ cache:
   paths:
     - .m2/repository
 
-validate: 
-  stage: test
-  script:
-    - 'mvn test'
-
 deploy_snapshot:
   stage: deploy
   script:
-    - 'mvn install deploy'
+    - 'mvn clean test install deploy'
   only:
     - /-snapshot$/
   artifacts:
@@ -26,7 +21,7 @@ deploy_snapshot:
 deploy_releash:
   stage: deploy
   script:
-    - 'mvn install deploy'
+    - 'mvn clean test install deploy'
   only:
     - /-final$/
   artifacts:

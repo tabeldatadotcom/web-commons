@@ -1,4 +1,4 @@
-package com.maryanto.dimas.template.web.commons.ui.datatables;
+package com.maryanto.dimas.plugins.web.commons.ui.datatables;
 
 import java.util.List;
 

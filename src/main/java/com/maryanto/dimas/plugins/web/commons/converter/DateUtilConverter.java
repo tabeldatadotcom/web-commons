@@ -1,4 +1,4 @@
-package com.maryanto.dimas.template.web.commons.converter;
+package com.maryanto.dimas.plugins.web.commons.converter;
 
 import java.beans.PropertyEditorSupport;
 import java.sql.Date;

@@ -1,4 +1,4 @@
-package com.maryanto.dimas.template.web.commons.data;
+package com.maryanto.dimas.plugins.web.commons.data;
 
 import java.io.Serializable;
 

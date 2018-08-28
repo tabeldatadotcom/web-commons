@@ -1,6 +1,6 @@
-package com.maryanto.dimas.template.web.commons.data;
+package com.maryanto.dimas.plugins.web.commons.data;
 
-import com.maryanto.dimas.template.web.commons.ui.datatables.DataTablesRequest;
+import com.maryanto.dimas.plugins.web.commons.ui.datatables.DataTablesRequest;
 
 import java.util.List;
 

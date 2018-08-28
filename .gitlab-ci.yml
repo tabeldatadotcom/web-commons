@@ -18,7 +18,7 @@ deploy_snapshot:
   script:
     - 'mvn install deploy'
   only:
-    - /-M\./
+    - /-snapshot$/
   artifacts:
     paths:
       - target/*.jar
@@ -28,7 +28,7 @@ deploy_releash:
   script:
     - 'mvn install deploy'
   only:
-    - /-RELEASE$/
+    - /-final$/
   artifacts:
     paths:
       - target/*.jar

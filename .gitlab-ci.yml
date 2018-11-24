@@ -1,3 +1,7 @@
+variables:
+    - SONAR_URL: 'http://repository.dimas-maryanto.com:8024'
+    - SONAR_AUTH: '2eb155ca79462a2d77bdd57f0fba32cce13bd9de'
+
 stages:
   - test
   - build
@@ -7,6 +11,11 @@ stages:
 cache:
   paths:
     - .m2/repository
+
+code_analys:
+    stage: build
+    script:
+        - mvn sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_AUTH
 
 deploy_snapshot:
   stage: deploy

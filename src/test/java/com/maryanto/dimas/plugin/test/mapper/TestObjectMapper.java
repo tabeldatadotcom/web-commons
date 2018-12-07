@@ -8,21 +8,29 @@ import org.junit.Test;
 
 public class TestObjectMapper extends TestCase {
 
-    private NasabahDTO data = new NasabahDTO();
-
-
     @Override
     protected void setUp() throws Exception {
 //        super.setUp();
-        data.setNomorRegister("1234");
     }
 
     @Test
-    public void testNasabahMapper(){
+    public void testNasabahMapper() {
+        NasabahDTO data = new NasabahDTO();
+        data.setNomorRegister("1234");
         Nasabah nasabah = NasabahMapper.instance.convertToEntity(data);
 
         assertNotNull(nasabah.getNomorCif());
         assertEquals("Bandingkan nomor cif", nasabah.getNomorCif(), data.getNomorRegister());
+    }
+
+    @Test
+    public void testNasabahDtoMapper(){
+        Nasabah nasabah = new Nasabah();
+        nasabah.setNomorCif("12345");
+
+        NasabahDTO dto = NasabahMapper.instance.convertToDto(nasabah);
+        assertNotNull(dto.getNomorRegister());
+        assertEquals("Bandingkan nomor cif", nasabah.getNomorCif(), dto.getNomorRegister());
     }
 
 }

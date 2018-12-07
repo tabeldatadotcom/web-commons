@@ -11,7 +11,7 @@ cache:
 code_analys:
   stage: build
   script:
-     - mvn clean package sonar:sonar -Dsonar.host.url=$URL_SONAR -Dsonar.login=$AUTH_SONAR
+    - mvn clean package sonar:sonar -Dsonar.host.url=$URL_SONAR -Dsonar.login=$AUTH_SONAR
 
 deploy_snapshot:
   stage: deploy

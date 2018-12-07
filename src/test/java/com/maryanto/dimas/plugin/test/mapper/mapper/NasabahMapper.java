@@ -13,8 +13,15 @@ public interface NasabahMapper extends ObjectMapper<Nasabah, NasabahDTO> {
 
     NasabahMapper instance = Mappers.getMapper(NasabahMapper.class);
 
+    @Override
     @Mappings(value = {
             @Mapping(target = "nomorCif", source = "dto.nomorRegister")
     })
     Nasabah convertToEntity(NasabahDTO dto);
+
+    @Override
+    @Mappings(value = {
+            @Mapping(source = "entity.nomorCif", target = "nomorRegister")
+    })
+    NasabahDTO convertToDto(Nasabah entity);
 }

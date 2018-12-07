@@ -8,15 +8,10 @@ cache:
   paths:
     - .m2/repository
 
-testing-automation:
-  stage: build
-  script:
-    - mvn clean test
-
 code_analys:
   stage: build
   script:
-    - mvn clean test package sonar:sonar -Dsonar.host.url=$URL_SONAR -Dsonar.login=$AUTH_SONAR
+    - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package install sonar:sonar -Dsonar.host.url=$URL_SONAR -Dsonar.login=$AUTH_SONAR -Dmaven.test.failure.ignore=false
 
 deploy_snapshot:
   stage: deploy

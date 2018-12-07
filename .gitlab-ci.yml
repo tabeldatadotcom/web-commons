@@ -8,6 +8,11 @@ cache:
   paths:
     - .m2/repository
 
+testing-automation:
+  stage: build
+  script:
+    - mvn clean test
+
 code_analys:
   stage: build
   script:
@@ -16,7 +21,7 @@ code_analys:
 deploy_snapshot:
   stage: deploy
   script:
-    - 'mvn clean test install deploy'
+    - 'mvn clean install deploy'
   only:
     - /-snapshot$/
   artifacts:
@@ -26,7 +31,7 @@ deploy_snapshot:
 deploy_releash:
   stage: deploy
   script:
-    - 'mvn clean test install deploy'
+    - 'mvn clean install deploy'
   only:
     - /-release$/
   artifacts:

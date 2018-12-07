@@ -23,7 +23,7 @@ deploy_releash:
   script:
     - 'mvn clean test install deploy'
   only:
-    - /-final$/
+    - /-release$/
   artifacts:
     paths:
       - target/*.jar

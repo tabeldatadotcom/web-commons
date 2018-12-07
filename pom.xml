@@ -12,11 +12,11 @@
     <distributionManagement>
         <repository>
             <id>nexus-developer</id>
-            <url>http://localhost:8081/repository/maven-releases/</url>
+            <url>http://repository.dimas-maryanto.com:8081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>nexus-developer</id>
-            <url>http://localhost:8081/repository/maven-snapshots/</url>
+            <url>http://repository.dimas-maryanto.com:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
@@ -48,6 +48,26 @@
     <build>
         <finalName>${artifactId}-${version}</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.2</version>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -89,7 +109,7 @@
                 </executions>
                 <configuration>
                     <serverId>nexus</serverId>
-                    <nexusUrl>http://localhost:8081/</nexusUrl>
+                    <nexusUrl>http://repository.dimas-maryanto.com:8081/</nexusUrl>
                     <skipStaging>true</skipStaging>
                 </configuration>
             </plugin>

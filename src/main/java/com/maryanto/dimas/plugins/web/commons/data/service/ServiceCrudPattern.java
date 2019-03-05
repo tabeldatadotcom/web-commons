@@ -2,6 +2,7 @@ package com.maryanto.dimas.plugins.web.commons.data.service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @param <T>
@@ -13,7 +14,7 @@ public interface ServiceCrudPattern<T, ID extends Serializable> {
      * @param param
      * @return
      */
-    T findId(ID param);
+    Optional<T> findId(ID param);
 
     /**
      * @return

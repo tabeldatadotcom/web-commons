@@ -1,7 +1,5 @@
 stages:
-  - test
   - build
-  - package
   - deploy
 
 cache:

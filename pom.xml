@@ -27,12 +27,12 @@
 
     <distributionManagement>
         <repository>
-            <id>repository.tabeldata.com</id>
-            <url>http://tabeldata.ip-dynamic.com:8081/repository/maven-releases/</url>
+            <id>repository.dimas-maryanto.com</id>
+            <url>http://repository.dimas-maryanto.com:8081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>repository.tabeldata.com</id>
-            <url>http://tabeldata.ip-dynamic.com:8081/repository/maven-snapshots/</url>
+            <id>repository.dimas-maryanto.com</id>
+            <url>http://repository.dimas-maryanto.com:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 

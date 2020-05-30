@@ -6,8 +6,24 @@
 
     <groupId>com.maryanto.dimas.plugins</groupId>
     <artifactId>web-commons</artifactId>
-    <version>2.0.4-release</version>
+    <version>2020.05.30.17.17-release</version>
     <packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <lombok.version>1.18.8</lombok.version>
+        <mapstruct.version>1.3.1.Final</mapstruct.version>
+        <apache.commons-lang3.version>3.9</apache.commons-lang3.version>
+        <junit.version>4.13</junit.version>
+        <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <nexus-staging-maven-plugin>1.5.1</nexus-staging-maven-plugin>
+        <archetype-packaging.version>3.0.1</archetype-packaging.version>
+    </properties>
 
     <distributionManagement>
         <repository>
@@ -24,36 +40,32 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.8</version>
+            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
-            <version>1.3.0.Final</version>
+            <version>${mapstruct.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-jdk8</artifactId>
-            <version>1.3.0.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-text</artifactId>
-            <version>1.7</version>
+            <version>${mapstruct.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.9</version>
+            <version>${apache.commons-lang3.version}</version>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 
     <build>
         <finalName>${artifactId}-${version}</finalName>
@@ -61,11 +73,12 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.4</version>
+                <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>default-prepare-agent</id>
@@ -85,7 +98,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <target>1.8</target>
                     <source>1.8</source>
@@ -94,7 +107,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
+                <version>${maven-deploy-plugin.version}</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
@@ -111,7 +124,7 @@
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.5.1</version>
+                <version>${nexus-staging-maven-plugin}</version>
                 <executions>
                     <execution>
                         <id>default-deploy</id>
@@ -122,8 +135,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <serverId>repository.tabeldata.com</serverId>
-                    <nexusUrl>http://tabeldata.ip-dynamic.com:8081/</nexusUrl>
+                    <serverId>repository.dimas-maryanto.com</serverId>
+                    <nexusUrl>http://repository.dimas-maryanto.com:8081/</nexusUrl>
                     <skipStaging>true</skipStaging>
                 </configuration>
             </plugin>

@@ -1,3 +1,13 @@
+# `2020.05.31.09.32-release`
+
+- Remote plugin `org.sonatype.plugins:nexus-staging-maven-plugin`
+
+# `2020.05.30.17.17-release`
+
+- Generalization version using system properties
+- Update package `junit:junit` -> `4.13`
+- Remove package `org.apache.commons:commons-text`
+
 `2.0.2-release`
 
 - Implement ISO 8601 date converter from String to `java.sql.Timestamp`

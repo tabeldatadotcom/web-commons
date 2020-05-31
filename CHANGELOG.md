@@ -1,22 +1,22 @@
-# `2020.05.31.09.32-release`
+# `v2020.05.31.09.32-release`
 
 - Remote plugin `org.sonatype.plugins:nexus-staging-maven-plugin`
 
-# `2020.05.30.17.17-release`
+# `v2020.05.30.17.17-release`
 
 - Generalization version using system properties
 - Update package `junit:junit` -> `4.13`
 - Remove package `org.apache.commons:commons-text`
 
-`2.0.2-release`
+# `v2.0.2-release`
 
 - Implement ISO 8601 date converter from String to `java.sql.Timestamp`
 
-`2.0.1-release`
+# `v2.0.1-release`
 
 - Simple order by query using `OrderingByColumns` class
 
-`2.0.0-release`
+# `v2.0.0-release`
 
 - Implement `java.util.Optional` as default `findId(...)` method
 - Implement `ObjectMapper` to set value Entity to DTO

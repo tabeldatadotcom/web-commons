@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <servers>
+        <server>
+            <id>repository.dimas-maryanto.com</id>
+            <username>developer</username>
+            <password>developer</password>
+        </server>
+    </servers>
+</settings>

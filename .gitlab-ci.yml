@@ -18,7 +18,7 @@ code_analys:
 deploy_releash:
   stage: deploy
   script:
-    - 'mvn clean install deploy'
+    - 'mvn clean install deploy -s .gitlab-ci_m2.xml'
   only:
     - /-release$/
   artifacts:

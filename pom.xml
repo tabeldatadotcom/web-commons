@@ -66,7 +66,6 @@
         </dependency>
     </dependencies>
 
-
     <build>
         <finalName>${artifactId}-${version}</finalName>
         <plugins>
@@ -120,25 +119,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>${nexus-staging-maven-plugin}</version>
-                <executions>
-                    <execution>
-                        <id>default-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <serverId>repository.dimas-maryanto.com</serverId>
-                    <nexusUrl>http://repository.dimas-maryanto.com:8081/</nexusUrl>
-                    <skipStaging>true</skipStaging>
-                </configuration>
             </plugin>
         </plugins>
         <extensions>

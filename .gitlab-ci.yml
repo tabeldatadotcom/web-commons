@@ -15,16 +15,6 @@ code_analys:
   only:
     - /-release$/
 
-deploy_snapshot:
-  stage: deploy
-  script:
-    - 'mvn clean install deploy'
-  only:
-    - /-snapshot$/
-  artifacts:
-    paths:
-      - target/*.jar
-
 deploy_releash:
   stage: deploy
   script:

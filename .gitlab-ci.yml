@@ -1,26 +1,55 @@
+image:
+  name: repository.dimas-maryanto.com:8086/maven:3.6-jdk-8
+
 stages:
+  - test
   - build
   - deploy
+  
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  MAVEN_CLI_OPTS: "--show-version"
 
 cache:
   paths:
     - .m2/repository
 
 code_analys:
-  stage: build
+  stage: test
+  before_script:
+    - mvn -s $M2_PROXY $MAVEN_CLI_OPTS versions:set -DnewVersion=$CI_COMMIT_TAG
   script:
-    - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package
-    - mvn install
-    - mvn sonar:sonar -Dsonar.projectKey=$PROJECT_KEY -Dsonar.host.url=$URL_SONAR -Dsonar.login=$AUTH_SONAR -Dmaven.test.failure.ignore=false
+    - mvn $MAVEN_CLI_OPTS -s $M2_PROXY clean jacoco:prepare-agent test jacoco:report
+    - mvn -s $M2_PROXY sonar:sonar -Dsonar.projectKey=$CI_PROJECT_ID-$CI_DEFAULT_BRANCH -Dsonar.host.url=$URL_SONAR -Dsonar.login=$AUTH_SONAR -Dmaven.test.failure.ignore=false
+  tags:
+    - docker
   only:
     - /-release$/
 
-deploy_releash:
-  stage: deploy
+building:
+  stage: build
+  before_script:
+    - mvn -s $M2_PROXY versions:set -DnewVersion=$CI_COMMIT_TAG
   script:
-    - 'mvn clean install deploy'
+    - mvn -s $M2_PROXY $MAVEN_CLI_OPTS package -DskipTests
   only:
     - /-release$/
+  tags:
+    - docker
   artifacts:
     paths:
       - target/*.jar
+      - src/main/docker/
+    name: $CI_PROJECT_NAME-$CI_COMMIT_TAG
+
+
+nexus-deploy:
+  stage: deploy
+  before_script:
+    - mvn -s $M2_PROXY versions:set -DnewVersion=$CI_COMMIT_TAG
+  script:
+    - mvn -s $M2_PROXY $MAVEN_CLI_OPTS deploy -DskipTests
+  tags:
+    - docker
+  only:
+    - /-release$/

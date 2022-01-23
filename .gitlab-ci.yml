@@ -23,6 +23,7 @@ code_analys:
     - mvn -s $M2_PROXY_XML sonar:sonar -Dsonar.projectKey=$CI_PROJECT_ID-$CI_DEFAULT_BRANCH -Dsonar.host.url=$URL_SONAR -Dsonar.login=$AUTH_SONAR -Dmaven.test.failure.ignore=false
   tags:
     - docker
+  allow_failure: true
   only:
     - /-release$/
 

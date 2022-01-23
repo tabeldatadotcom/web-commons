@@ -17,10 +17,10 @@ cache:
 code_analys:
   stage: test
   before_script:
-    - mvn -s $M2_PROXY $MAVEN_CLI_OPTS versions:set -DnewVersion=$CI_COMMIT_TAG
+    - mvn -s $M2_PROXY_XML $MAVEN_CLI_OPTS versions:set -DnewVersion=$CI_COMMIT_TAG
   script:
     - mvn $MAVEN_CLI_OPTS -s $M2_PROXY clean jacoco:prepare-agent test jacoco:report
-    - mvn -s $M2_PROXY sonar:sonar -Dsonar.projectKey=$CI_PROJECT_ID-$CI_DEFAULT_BRANCH -Dsonar.host.url=$URL_SONAR -Dsonar.login=$AUTH_SONAR -Dmaven.test.failure.ignore=false
+    - mvn -s $M2_PROXY_XML sonar:sonar -Dsonar.projectKey=$CI_PROJECT_ID-$CI_DEFAULT_BRANCH -Dsonar.host.url=$URL_SONAR -Dsonar.login=$AUTH_SONAR -Dmaven.test.failure.ignore=false
   tags:
     - docker
   only:
@@ -29,9 +29,9 @@ code_analys:
 building:
   stage: build
   before_script:
-    - mvn -s $M2_PROXY versions:set -DnewVersion=$CI_COMMIT_TAG
+    - mvn -s $M2_PROXY_XML versions:set -DnewVersion=$CI_COMMIT_TAG
   script:
-    - mvn -s $M2_PROXY $MAVEN_CLI_OPTS package -DskipTests
+    - mvn -s $M2_PROXY_XML $MAVEN_CLI_OPTS package -DskipTests
   only:
     - /-release$/
   tags:
@@ -46,9 +46,9 @@ building:
 nexus-deploy:
   stage: deploy
   before_script:
-    - mvn -s $M2_PROXY versions:set -DnewVersion=$CI_COMMIT_TAG
+    - mvn -s $M2_PROXY_XML versions:set -DnewVersion=$CI_COMMIT_TAG
   script:
-    - mvn -s $M2_PROXY $MAVEN_CLI_OPTS deploy -DskipTests
+    - mvn -s $M2_PROXY_XML $MAVEN_CLI_OPTS deploy -DskipTests
   tags:
     - docker
   only:
